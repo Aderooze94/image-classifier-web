@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Classifier (MobileNet)</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Classifier (MobileNet)</h1></header>
+
+  <main>
+    <label class="btn">
+      📷 Prendre une photo
+      <input id="fileInput" type="file" accept="image/*" capture="environment" hidden />
+    </label>
+
+    <div id="status">Chargement du modèle…</div>
+    <img id="preview" alt="Aperçu" />
+    <div id="results"></div>
+    <pre id="debug" style="font-size:.85rem;opacity:.8;white-space:pre-wrap"></pre>
+
+  </main>
+
+  <!-- TFJS + MobileNet depuis CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.21.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
